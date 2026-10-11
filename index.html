@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSC - Daftar Member Baru</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Space Grotesk & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Aviation Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- html2canvas library for pure CSS card export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        nscCream: '#FFFDF9',
+                        nscYellow: '#FFDE59',
+                        nscPink: '#FF66C4',
+                        nscCyan: '#00F0FF',
+                        nscGreen: '#10B981',
+                        nscDark: '#121212',
+                        nscCardBg: '#FFF9E6',
+                    },
+                    fontFamily: {
+                        heading: ['"Space Grotesk"', 'sans-serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neo': '4px 4px 0px #121212',
+                        'neo-lg': '8px 8px 0px #121212',
+                        'neo-sm': '2px 2px 0px #121212',
+                        'neo-pink': '4px 4px 0px #FF66C4',
+                        'neo-cyan': '4px 4px 0px #00F0FF',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FFFDF9;
+            color: #121212;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(#121212 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+        }
+
+        .heading-font {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Custom smooth focus and button hover effects */
+        .neo-btn {
+            transition: all 0.15s ease-in-out;
+            box-shadow: 4px 4px 0px #121212;
+            border: 2px solid #121212;
+        }
+        .neo-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #121212;
+        }
+        .neo-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #121212;
+        }
+
+        .neo-card {
+            border: 3px solid #121212;
+            box-shadow: 6px 6px 0px #121212;
+        }
+
+        .neo-input {
+            border: 2px solid #121212;
+            box-shadow: 3px 3px 0px #121212;
+            transition: all 0.2s ease;
+        }
+        .neo-input:focus {
+            outline: none;
+            box-shadow: 5px 5px 0px #FF66C4;
+            transform: translateY(-1px);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(2deg); }
+        }
+        .float-badge {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-nscYellow selection:text-nscDark">
+
+    <header class="w-full border-b-3 border-[#121212] bg-nscCream sticky top-0 z-50 px-4 py-4 md:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-nscYellow neo-card flex items-center justify-center transform -rotate-3">
+                    <i data-lucide="plane-takeoff" class="w-6 h-6 text-nscDark"></i>
+                </div>
+                <div>
+                    <span class="heading-font text-xl md:text-2xl font-bold tracking-tight">NUSASKY <span class="bg-nscCyan px-1.5 py-0.5 border border-nscDark">COMMUNITY</span></span>
+                    <p class="text-xs font-semibold text-gray-600 hidden sm:block">Komunitas Pecinta Aviasi Indonesia 🇮🇩</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="#register" class="neo-btn bg-nscPink text-nscDark px-4 py-2 text-sm font-bold rounded-lg flex items-center gap-2">
+                    <i data-lucide="id-card" class="w-4 h-4"></i> Daftar Sekarang
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-8 md:py-16 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center mb-16">
+            
+            <!-- Hero Text Left -->
+            <div class="lg:col-span-8 space-y-6 text-left">
+                <div class="inline-flex items-center gap-2 bg-nscYellow px-3 py-1.5 neo-card text-xs md:text-sm font-bold rounded-md transform -rotate-1">
+                    <i data-lucide="radar" class="w-4 h-4 text-red-600 animate-pulse"></i> AIRLINE SPOTTERS & AVIATION GEEKS
+                </div>
+                
+                <h1 class="heading-font text-4xl sm:text-6xl font-extrabold tracking-tight leading-none">
+                    JELAJAHI LANGIT <span class="bg-nscCyan px-2 py-1 border-2 border-nscDark inline-block transform rotate-1 shadow-[4px_4px_0px_#121212]">INDONESIA</span> BERSAMA KAMI.
+                </h1>
+
+                <p class="text-base sm:text-lg font-medium text-gray-800 leading-relaxed max-w-2xl">
+                    Selamat datang di portal pendaftaran resmi <strong class="bg-nscYellow px-1">Nusasky Community (NSC)</strong>. Wadah berkumpulnya avgeek, planespotter, dan pencinta dunia penerbangan seluruh nusantara. Ambil boarding pass digitalmu sekarang!
+                </p>
+
+                <div class="flex flex-wrap gap-4 pt-2">
+                    <a href="#register" class="neo-btn bg-nscYellow px-6 py-3.5 text-base font-extrabold rounded-xl flex items-center gap-3">
+                        <span>Mulai Pendaftaran</span>
+                        <i data-lucide="arrow-down" class="w-5 h-5"></i>
+                    </a>
+                    <button id="heroWaLockedBtn" onclick="alertLockedWa()" class="neo-btn bg-gray-200 text-gray-700 px-6 py-3.5 text-base font-extrabold rounded-xl flex items-center gap-3 cursor-pointer">
+                        <i data-lucide="message-square text-nscGreen" class="w-5 h-5"></i> Grup WA <span class="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full uppercase">Terkunci <i data-lucide="lock" class="w-3 h-3 inline"></i></span>
+                    </button>
+                </div>
+
+                <div class="flex items-center gap-6 pt-4 text-sm font-bold text-gray-700">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-nscGreen bg-nscDark p-0.5 rounded-full"></i> 100% Gratis Daftar
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4 text-nscGreen bg-nscDark p-0.5 rounded-full"></i> Dapat Member Card
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Graphic Right (Aviation Badge Art) -->
+            <div class="lg:col-span-4 relative flex justify-center">
+                <div class="absolute -top-6 -left-6 w-24 h-24 bg-nscPink rounded-2xl neo-card float-badge flex items-center justify-center z-10 hidden sm:flex">
+                    <i data-lucide="plane" class="w-10 h-10 text-nscDark"></i>
+                </div>
+                <div class="absolute -bottom-6 -right-6 w-20 h-20 bg-nscCyan rounded-full neo-card float-badge flex items-center justify-center z-10 hidden sm:flex" style="animation-delay: 2s;">
+                    <i data-lucide="radio-tower" class="w-8 h-8 text-nscDark"></i>
+                </div>
+
+                <div class="w-full max-w-sm bg-nscCardBg neo-card p-6 md:p-7 rounded-2xl text-left space-y-3">
+                    <div class="flex items-center gap-3 border-b-2 border-nscDark pb-3">
+                        <div class="w-10 h-10 bg-nscYellow neo-card rounded-xl flex items-center justify-center">
+                            <i data-lucide="plane-landing" class="w-6 h-6 text-nscDark"></i>
+                        </div>
+                        <h3 class="heading-font font-extrabold text-lg leading-tight">Kenapa Harus Masuk NSC?</h3>
+                    </div>
+                    <ul class="space-y-2 text-xs md:text-sm font-semibold text-gray-800">
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-nscGreen shrink-0 mt-0.5"></i>
+                            <span>Bisa diskusi seputar aviasi</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-nscGreen shrink-0 mt-0.5"></i>
+                            <span>Admin ramah & member baik</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-nscGreen shrink-0 mt-0.5"></i>
+                            <span>Bisa dapet temen sesama avgeek</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-nscGreen shrink-0 mt-0.5"></i>
+                            <span>Anti dikacangin & anti drama</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-nscGreen shrink-0 mt-0.5"></i>
+                            <span>Dapet Member Card</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i data-lucide="check-circle-2" class="w-4 h-4 text-nscGreen shrink-0 mt-0.5"></i>
+                            <span>Dapet MBG 🧢🗿</span>
+                        </li>
+                    </ul>
+                    <!-- Dynamic Status Badge -->
+                    <div id="statusBadge" class="bg-nscDark text-white py-2 px-3 rounded-lg font-bold text-xs text-center mt-2 flex items-center justify-center gap-1.5 transition-all duration-300">
+                        <i data-lucide="alert-circle" id="statusIcon" class="w-3.5 h-3.5 text-nscYellow shrink-0"></i> 
+                        <span id="statusText">STATUS: WAJIB DAFTAR DULU</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section id="register" class="max-w-3xl mx-auto bg-white neo-card p-6 md:p-10 rounded-2xl mb-16">
+            <div class="text-center mb-8">
+                <span class="bg-nscYellow px-3 py-1 neo-card text-xs font-bold uppercase rounded-md">FORMULIR PENDAFTARAN</span>
+                <h2 class="heading-font text-3xl md:text-4xl font-extrabold mt-3">Join Nusasky Community</h2>
+                <p class="text-gray-600 font-medium text-sm md:text-base mt-1">Lengkapi data diri di bawah ini untuk memebuat member card resmi Anda.</p>
+            </div>
+
+            <form id="nscForm" class="space-y-6">
+                <!-- Nama -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="nama">
+                        <i data-lucide="user" class="w-4 h-4 text-nscPink inline-block mr-1"></i> Nama / Nama Panggilan <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="nama" required placeholder="Cth: Capt. Rian" 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream">
+                </div>
+
+                <!-- Umur -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="umur">
+                        <i data-lucide="cake" class="w-4 h-4 text-nscCyan inline-block mr-1"></i> Umur (Minimal 10 Tahun) <span class="text-red-500">*</span>
+                    </label>
+                    <input type="number" id="umur" min="10" max="100" required placeholder="Cth: 18" 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream">
+                    <p id="ageError" class="text-red-600 text-xs font-bold mt-1 hidden">Maaf, umur minimal untuk bergabung adalah 10 tahun.</p>
+                </div>
+
+                <!-- HUB Bandara -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="hubBandara">
+                        <i data-lucide="map-pin" class="w-4 h-4 text-nscGreen inline-block mr-1"></i> HUB Bandara (Bandara Terdekat) <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="hubBandara" required placeholder="Cth: CGK / Juanda (SUB)" 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream">
+                </div>
+
+                <!-- Tahu NSC Darimana -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="tahuNsc">
+                        <i data-lucide="megaphone" class="w-4 h-4 text-yellow-500 inline-block mr-1"></i> Darimana Tahu Nusasky Community? <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="tahuNsc" required placeholder="Cth: IG / TikTok / Teman" 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream">
+                </div>
+
+                <!-- Alasan Masuk NSC -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="alasanNsc">
+                        <i data-lucide="heart" class="w-4 h-4 text-nscPink inline-block mr-1"></i> Alasan Pengen Masuk NSC <span class="text-red-500">*</span>
+                    </label>
+                    <textarea id="alasanNsc" rows="3" required placeholder="Cth: Ingin cari teman sesama avgeek dan diskusi aviasi." 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream"></textarea>
+                </div>
+
+                <!-- Apa yg diketahui tentang aviasi -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="tentangAviasi">
+                        <i data-lucide="book-open" class="w-4 h-4 text-nscCyan inline-block mr-1"></i> Apa Yang Lu Tahu Tentang Aviasi? <span class="text-red-500">*</span>
+                    </label>
+                    <textarea id="tentangAviasi" rows="3" required placeholder="Cth: Seputar maskapai, armada pesawat, dan operasional bandara." 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream"></textarea>
+                </div>
+
+                <!-- Berapa lama suka aviasi -->
+                <div>
+                    <label class="block heading-font font-bold text-sm mb-2" for="lamaAviasi">
+                        <i data-lucide="clock" class="w-4 h-4 text-nscGreen inline-block mr-1"></i> Sudah Berapa Lama Suka Aviasi? <span class="text-red-500">*</span>
+                    </label>
+                    <input type="text" id="lamaAviasi" required placeholder="Cth: 2 tahun / sejak kecil" 
+                        class="w-full px-4 py-3 neo-input rounded-xl font-medium text-base bg-nscCream">
+                </div>
+
+                <!-- Checkbox Persetujuan Peraturan -->
+                <div class="bg-nscCream p-4 neo-card rounded-xl">
+                    <label class="flex items-start gap-3 cursor-pointer select-none">
+                        <input type="checkbox" id="agreeRules" required class="mt-1 w-5 h-5 accent-nscPink cursor-pointer rounded">
+                        <span class="text-xs md:text-sm font-bold text-gray-800 leading-snug">
+                            Saya menyetujui semua rules dan tata tertib yang berlaku di <strong class="bg-nscYellow px-1">Nusasky Community</strong>. <span class="text-red-500">*</span>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="pt-2 text-center">
+                    <button type="submit" class="neo-btn bg-nscYellow w-full py-4 text-lg font-extrabold rounded-xl flex items-center justify-center gap-3">
+                        <i data-lucide="ticket" class="w-5 h-5"></i> Generate Member Card Saya!
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <div id="resultModal" class="hidden max-w-2xl mx-auto mb-16 animate-fade-in">
+            <div class="bg-nscPink neo-card p-6 md:p-8 rounded-2xl text-center space-y-6">
+                <div class="inline-flex items-center gap-2 bg-nscYellow px-4 py-1.5 neo-card text-xs font-extrabold rounded-md">
+                    <i data-lucide="check-circle" class="w-4 h-4 text-nscGreen"></i> PENDAFTARAN BERHASIL!
+                </div>
+                
+                <h3 class="heading-font text-2xl md:text-3xl font-extrabold text-nscDark">Selamat! Member Card Anda Telah Terbit.</h3>
+                <p class="text-sm font-bold text-gray-900">Silakan unduh member card di bawah ini. Tombol WhatsApp group kini telah terbuka!</p>
+
+                <!-- PURE CSS MEMBER CARD (Optimized for html2canvas rendering & smooth text layout) -->
+                <div class="flex justify-center overflow-x-auto py-2">
+                    <div id="memberCard" style="width: 100%; max-width: 440px; background-color: #FFFDF9; border: 3px solid #121212; box-shadow: 6px 6px 0px #121212; border-radius: 16px; padding: 20px; text-align: left; font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; position: relative; color: #121212; box-sizing: border-box;">
+                        
+                        <!-- Header Card -->
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px dashed #121212; padding-bottom: 12px; margin-bottom: 14px;">
+                            <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 4px;">
+                                <span style="font-family: 'Space Grotesk', sans-serif; font-size: 17px; font-weight: 800; letter-spacing: -0.3px; line-height: 1.2; display: block; color: #121212;">NUSASKY COMMUNITY</span>
+                                <span style="display: inline-block; font-size: 10px; font-weight: 800; background-color: #FFDE59; padding: 3px 8px; border: 1.5px solid #121212; border-radius: 6px; line-height: 1.2;">OFFICIAL MEMBER PASS</span>
+                            </div>
+                            <div style="width: 40px; height: 40px; min-width: 40px; background-color: #00F0FF; border: 2px solid #121212; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; line-height: 1;">
+                                <i data-lucide="plane" style="width: 22px; height: 22px; color: #121212;"></i>
+                            </div>
+                        </div>
+
+                        <!-- Card Body Grid -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                            <div style="background-color: #FFF9E6; padding: 10px 12px; border: 2px solid #121212; border-radius: 10px; min-height: 58px; display: flex; flex-direction: column; justify-content: center;">
+                                <span style="display: block; font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">NAMA MEMBER</span>
+                                <strong id="cardNama" style="font-size: 13px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #121212; line-height: 1.3; word-break: break-word;">-</strong>
+                            </div>
+                            <div style="background-color: #FFF9E6; padding: 10px 12px; border: 2px solid #121212; border-radius: 10px; min-height: 58px; display: flex; flex-direction: column; justify-content: center;">
+                                <span style="display: block; font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">UMUR / TAHUN</span>
+                                <strong id="cardUmur" style="font-size: 13px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #121212; line-height: 1.3;">-</strong>
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px;">
+                            <div style="background-color: #FFF9E6; padding: 10px 12px; border: 2px solid #121212; border-radius: 10px; min-height: 58px; display: flex; flex-direction: column; justify-content: center;">
+                                <span style="display: block; font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">HUB BANDARA</span>
+                                <strong id="cardHub" style="font-size: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #121212; line-height: 1.3; word-break: break-word;">-</strong>
+                            </div>
+                            <div style="background-color: #FFF9E6; padding: 10px 12px; border: 2px solid #121212; border-radius: 10px; min-height: 58px; display: flex; flex-direction: column; justify-content: center;">
+                                <span style="display: block; font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">FAVORIT AVIASI</span>
+                                <strong id="cardLama" style="font-size: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: #121212; line-height: 1.3; word-break: break-word;">-</strong>
+                            </div>
+                        </div>
+
+                        <div style="background-color: #FFF9E6; padding: 10px 12px; border: 2px solid #121212; border-radius: 10px; margin-bottom: 10px;">
+                            <span style="display: block; font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">ALASAN MASUK NSC</span>
+                            <p id="cardAlasan" style="margin: 0; font-weight: 600; font-size: 11px; line-height: 1.4; color: #121212; word-break: break-word;">-</p>
+                        </div>
+
+                        <div style="background-color: #FFF9E6; padding: 10px 12px; border: 2px solid #121212; border-radius: 10px; margin-bottom: 10px;">
+                            <span style="display: block; font-size: 9px; font-weight: 800; color: #555; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">PENGETAHUAN AVIASI</span>
+                            <p id="cardAviasi" style="margin: 0; font-weight: 600; font-size: 11px; line-height: 1.4; color: #121212; word-break: break-word;">-</p>
+                        </div>
+
+                        <!-- Tanggal Bergabung Badge -->
+                        <div style="background-color: #00F0FF; padding: 8px 12px; border: 2px solid #121212; border-radius: 10px; margin-bottom: 14px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-size: 9px; font-weight: 800; color: #121212; text-transform: uppercase; letter-spacing: 0.5px;">JOIN DATE</span>
+                            <strong id="cardJoinDate" style="font-size: 11px; font-family: 'Space Grotesk', sans-serif; font-weight: 800; color: #121212;">-</strong>
+                        </div>
+
+                        <!-- Card Footer -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-top: 2px solid #121212; padding-top: 10px; font-size: 10px;">
+                            <div style="display: flex; flex-direction: column; gap: 2px;">
+                                <span style="font-weight: 800; color: #121212;">SUMBER: <span id="cardSumber" style="font-weight: 600; color: #444;">-</span></span>
+                                <span style="color: #666; font-weight: 700; font-size: 9px;">ID: NSC-2026-VERIFIED</span>
+                            </div>
+                            <div style="background-color: #FF66C4; padding: 4px 8px; border: 1.5px solid #121212; border-radius: 6px; font-weight: 800; font-size: 9px; color: #121212; letter-spacing: 0.3px;">
+                                INDONESIA AVGEEK
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons after submission (WhatsApp Unlocked!) -->
+                <div class="flex flex-col sm:flex-row justify-center gap-4 pt-2">
+                    <button id="downloadBtn" class="neo-btn bg-nscYellow px-6 py-3.5 text-base font-extrabold rounded-xl flex items-center justify-center gap-2">
+                        <i data-lucide="download" class="w-5 h-5"></i> Download Member Card
+                    </button>
+                    <a id="unlockedWaBtn" href="https://chat.whatsapp.com/KoZyPyuSgGZB6iUOiTPdYP?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="neo-btn bg-nscGreen text-white px-6 py-3.5 text-base font-extrabold rounded-xl flex items-center justify-center gap-2">
+                        <i data-lucide="message-square" class="w-5 h-5"></i> Masuk Grup WhatsApp (Terbuka!)
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="w-full border-t-3 border-[#121212] bg-nscCream py-8 px-4 text-center">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-2">
+                <span class="heading-font font-bold">NUSASKY COMMUNITY 2026</span>
+            </div>
+            <p class="text-xs font-bold text-gray-700">
+                Komunitas Pecinta Aviasi Indonesia. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        function alertLockedWa() {
+            // Friendly custom message box instead of alert()
+            const existingModal = document.getElementById('customAlertModal');
+            if (existingModal) existingModal.remove();
+
+            const alertDiv = document.createElement('div');
+            alertDiv.id = 'customAlertModal';
+            alertDiv.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 animate-fade-in';
+            alertDiv.innerHTML = `
+                <div class="bg-white neo-card p-6 md:p-8 rounded-2xl max-w-md w-full text-center space-y-4">
+                    <div class="w-16 h-16 bg-red-400 neo-card rounded-2xl mx-auto flex items-center justify-center text-2xl text-white">
+                        <i data-lucide="lock" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="heading-font font-extrabold text-xl">Akses Grup WhatsApp Dikunci!</h3>
+                    <p class="text-sm font-medium text-gray-700">Anda harus mengisi formulir pendaftaran member baru dan men-generate Member Card Nusasky terlebih dahulu sebelum dapat bergabung ke grup WhatsApp.</p>
+                    <div class="pt-2">
+                        <button onclick="document.getElementById('customAlertModal').remove(); document.getElementById('register').scrollIntoView({behavior: 'smooth'});" class="neo-btn bg-nscYellow w-full py-3 font-bold rounded-xl flex items-center justify-center gap-2">
+                            <i data-lucide="edit-3" class="w-4 h-4"></i> Isi Formulir Sekarang
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(alertDiv);
+            lucide.createIcons();
+        }
+
+        document.getElementById('nscForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const umur = parseInt(document.getElementById('umur').value);
+            const ageError = document.getElementById('ageError');
+
+            if (umur < 10) {
+                ageError.classList.remove('hidden');
+                document.getElementById('umur').focus();
+                return;
+            } else {
+                ageError.classList.add('hidden');
+            }
+
+            // Gather values
+            const nama = document.getElementById('nama').value;
+            const hubBandara = document.getElementById('hubBandara').value;
+            const tahuNsc = document.getElementById('tahuNsc').value;
+            const alasanNsc = document.getElementById('alasanNsc').value;
+            const tentangAviasi = document.getElementById('tentangAviasi').value;
+            const lamaAviasi = document.getElementById('lamaAviasi').value;
+
+            // Formatted Date (e.g. 11 Oktober 2026)
+            const today = new Date();
+            const options = { day: 'numeric', month: 'long', year: 'numeric' };
+            const joinDateFormatted = today.toLocaleDateString('id-ID', options);
+
+            // Populate Member Card
+            document.getElementById('cardNama').innerText = nama;
+            document.getElementById('cardUmur').innerText = umur + " Tahun";
+            document.getElementById('cardHub').innerText = hubBandara;
+            document.getElementById('cardSumber').innerText = tahuNsc;
+            document.getElementById('cardAlasan').innerText = alasanNsc;
+            document.getElementById('cardAviasi').innerText = tentangAviasi;
+            document.getElementById('cardLama').innerText = lamaAviasi;
+            document.getElementById('cardJoinDate').innerText = joinDateFormatted;
+
+            // Update Status Badge to "KAMU SUDAH TERDAFTAR"
+            const statusBadge = document.getElementById('statusBadge');
+            const statusText = document.getElementById('statusText');
+            statusBadge.className = "bg-nscGreen text-white py-2 px-3 rounded-lg font-bold text-xs text-center mt-2 flex items-center justify-center gap-1.5 transition-all duration-300";
+            statusBadge.innerHTML = `<i data-lucide="check-circle" class="w-3.5 h-3.5 text-white shrink-0"></i> STATUS: KAMU SUDAH TERDAFTAR`;
+
+            // Show Result Modal
+            const modal = document.getElementById('resultModal');
+            modal.classList.remove('hidden');
+            modal.scrollIntoView({ behavior: 'smooth' });
+
+            // Unlock Hero WhatsApp button as well
+            const heroWaBtn = document.getElementById('heroWaLockedBtn');
+            heroWaBtn.outerHTML = `
+                <a href="https://chat.whatsapp.com/KoZyPyuSgGZB6iUOiTPdYP?s=cl&p=a&mlu=4&ilr=4" target="_blank" class="neo-btn bg-nscGreen text-white px-6 py-3.5 text-base font-extrabold rounded-xl flex items-center gap-3">
+                    <i data-lucide="message-square" class="w-5 h-5"></i> Gabung Grup WA (Terbuka!)
+                </a>
+            `;
+            lucide.createIcons();
+        });
+
+        // Download Card Handler using html2canvas
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const cardElement = document.getElementById('memberCard');
+            const btn = this;
+            btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin inline-block"></i> Menyimpan...';
+            lucide.createIcons();
+            
+            html2canvas(cardElement, {
+                scale: 3,
+                useCORS: true,
+                backgroundColor: '#FFFDF9'
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'Nusasky-Member-Card.png';
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                btn.innerHTML = '<i data-lucide="check" class="w-5 h-5 inline-block"></i> Berhasil Diunduh!';
+                lucide.createIcons();
+                setTimeout(() => {
+                    btn.innerHTML = '<i data-lucide="download" class="w-5 h-5 inline-block"></i> Download Member Card';
+                    lucide.createIcons();
+                }, 3000);
+            }).catch(err => {
+                console.error(err);
+                btn.innerHTML = '<i data-lucide="alert-triangle" class="w-5 h-5 inline-block"></i> Coba Lagi';
+                lucide.createIcons();
+            });
+        });
+    </script>
+</body>
+</html>
